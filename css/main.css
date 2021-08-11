@@ -108,14 +108,14 @@ img:hover {
     justify-content: center;
     height: 40px;
     width: 40px;
-    background-color: rgb(199, 199, 199);
-    font-family: brands;
-    
+    background-color: rgb(166, 252, 177);
+    font-family: brands; 
 }
 
 a {
     cursor: pointer;
     text-decoration: none;
+    color:rgb(179, 179, 179);
 }
 
 .socials .fac::before {
