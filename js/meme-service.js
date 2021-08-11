@@ -71,7 +71,7 @@ function drawImg() {
 }
 
 function drawText(line) {
-    gCtx.font = `${line.size}px impact`;
+    gCtx.font = `${line.size}px Impact`;
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = 'white'

@@ -10,14 +10,16 @@
 </head>
 
 <body onload="init()">
-    <div class="main-page">
-        <header class="main-header">
-            header place holder
-        </header>
+    <header class="main-header">
+        <div class="logo">MemeGenerator</div>
+        <ul class="nav-bar clean-list">
+            <li><a href="">Gallery</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+    </header>
+    <div class="main-page main-layout">
         <div class="gallery">
-
         </div>
-
     </div>
     <div class="editing-page" hidden>
         <div class="canvas-container">
@@ -29,10 +31,19 @@
             <button onclick="onSmaller()">decrease text size</button>
             <button onclick="increaseHeight()">↑</button>
             <button onclick="decreaseHeight()">↓</button>
-            <button onclick="changeLine()" >↹</button>
+            <button onclick="changeLine()">↹</button>
             <button onclick="showMainPage()">save</button>
         </div>
     </div>
+    <footer class="main-footer">
+        <div class="logo">MemeGenerator</div>
+        <div class="copy">© All rights reserved 2021</div>
+        <ul class="socials clean-list">
+            <li class="facebook"><a href="https://www.facebook.com/lior.lezerovich" class="fac"></a></li>
+            <li class="instagram"><a href="https://www.instagram.com/liorleizerovich/" class="inst"></a></li>
+            <li class="github"><a href="https://github.com/LiorLe97" class="git"></a></li>
+        </ul>
+    </footer>
     <script src="js/util.js"></script>
     <script src="js/storage-service.js"></script>
     <script src="js/meme-service.js"></script>
