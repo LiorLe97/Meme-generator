@@ -5,6 +5,7 @@
 
 body {
     margin: 0 auto;
+    text-align:center;
 }
 
 img {
@@ -13,10 +14,26 @@ img {
 
 .canvas {
     border: black 1px solid;
+    height: 100%;
+    width: 50%;
 }
 
 .main-header {
     text-align: center;
     background-color: gray;
     height: 15vh
+}
+
+.editing-page{
+    height:100vh;
+}
+
+.canvas-container{
+    height:50%;
+}
+
+.text-changes{
+    
+    height:50%;
+    flex-direction:column;
 }
