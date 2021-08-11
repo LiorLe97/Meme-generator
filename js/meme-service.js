@@ -6,7 +6,7 @@ let gtxtValue = '';
 let startingPosX = gCanvas.width / 2
 let startingPosY = gCanvas.height / 2
 let gCurrImgId;
-console.log(gCanvas.width)
+
 
 
 function init() {
@@ -64,20 +64,19 @@ function drawImg() {
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
        gMeme.lines.forEach(function (line){
-           drawText(line.txt, line.posX, line.posY)
+           drawText(line)
        })
     }
 
 }
 
-function drawText(txt, x, y) {
-    gCtx.font = `${gMeme.lines[gMeme.selectedLineIdx].size}px impact`;
-    gCtx.fillText(txt, x, y);
+function drawText(line) {
+    gCtx.font = `${line.size}px impact`;
     gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = 'white'
-    gCtx.fillText(txt, x, y)
-    gCtx.strokeText(txt, x, y)
+    gCtx.fillText(line.txt, line.posX, line.posY)
+    gCtx.strokeText(line.txt, line.posX, line.posY)
 
 }
 
@@ -112,7 +111,7 @@ function showMainPage() {
 
 
 function onLarger() {
-    gMeme.lines[gMeme.selectedLineIdx].size += 10;
+    gMeme.lines[gMeme.selectedLineIdx].size +=10;
     drawImg()
 }
 function onSmaller() {
@@ -136,7 +135,7 @@ function changeLine() {
     if (gMeme.selectedLineIdx === gMeme.lines.length) {
         gMeme.selectedLineIdx = 0;
     }
-    
+    console.log(gMeme.selectedLineIdx)
 }
 
 
