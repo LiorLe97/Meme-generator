@@ -3,9 +3,10 @@
 const gCanvas = document.querySelector('.canvas');
 const gCtx = gCanvas.getContext('2d')
 let gtxtValue = '';
-let startingPosX = gCanvas.width/2
-let startingPosY = gCanvas.height/2
+let startingPosX = gCanvas.width / 2
+let startingPosY = gCanvas.height / 2
 let gCurrImgId;
+console.log(gCanvas.width)
 
 
 function init() {
@@ -15,7 +16,23 @@ function init() {
 
 let gImgs = [
     { id: 1, url: 'images/meme images-square/1.jpg', keywords: ['happy'] },
-    { id: 2, url: 'images/meme images-square/2.jpg', keywords: ['happy'] }
+    { id: 2, url: 'images/meme images-square/2.jpg', keywords: ['happy'] },
+    { id: 3, url: 'images/meme images-square/3.jpg', keywords: ['happy'] },
+    { id: 4, url: 'images/meme images-square/4.jpg', keywords: ['happy'] },
+    { id: 5, url: 'images/meme images-square/5.jpg', keywords: ['happy'] },
+    { id: 6, url: 'images/meme images-square/6.jpg', keywords: ['happy'] },
+    { id: 7, url: 'images/meme images-square/7.jpg', keywords: ['happy'] },
+    { id: 8, url: 'images/meme images-square/8.jpg', keywords: ['happy'] },
+    { id: 9, url: 'images/meme images-square/9.jpg', keywords: ['happy'] },
+    { id: 10, url: 'images/meme images-square/10.jpg', keywords: ['happy'] },
+    { id: 11, url: 'images/meme images-square/11.jpg', keywords: ['happy'] },
+    { id: 12, url: 'images/meme images-square/12.jpg', keywords: ['happy'] },
+    { id: 13, url: 'images/meme images-square/13.jpg', keywords: ['happy'] },
+    { id: 14, url: 'images/meme images-square/14.jpg', keywords: ['happy'] },
+    { id: 15, url: 'images/meme images-square/15.jpg', keywords: ['happy'] },
+    { id: 16, url: 'images/meme images-square/16.jpg', keywords: ['happy'] },
+    { id: 17, url: 'images/meme images-square/17.jpg', keywords: ['happy'] },
+    { id: 18, url: 'images/meme images-square/18.jpg', keywords: ['happy'] },
 ];
 
 
@@ -27,7 +44,15 @@ let gMeme = {
             txt: '',
             size: 20,
             align: 'left',
-            color: 'red'
+            color: 'red',
+            posY:startingPosY
+        },
+        {
+            txt: '',
+            size: 20,
+            align: 'left',
+            color: 'red',
+            posY:startingPosY
         }
     ]
 }
@@ -36,9 +61,8 @@ function drawImg() {
     img.src = getMemeById(gMeme.selectedImgId).url
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-        drawText(gMeme.lines[gMeme.selectedLineIdx].txt, startingPosX, startingPosY)
-        //drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 100, 130)
-        // drawText(gMeme.lines[gMeme.selectedLineIdx].txt, 100, 80)
+        drawText(gMeme.lines[gMeme.selectedLineIdx].txt, startingPosX, gMeme.lines[gMeme.selectedLineIdx].posY)
+
     }
 }
 
@@ -67,40 +91,48 @@ function getMemeById(memeId) {
 
 function onSetText(val) {
     gMeme.lines[gMeme.selectedLineIdx].txt = val;
-    drawImg()
+    drawImg();
 }
 
-function showId(el) {
+function chooseImg(el) {
     gMeme.selectedImgId = +(el.dataset.id);
-    document.querySelector('.editing-page').hidden = false
-    document.querySelector('.main-page').hidden = true
-    drawImg()
+    drawImg();
 }
 
 
-function showMainPage(){
+function showMainPage() {
     document.querySelector('.editing-page').hidden = true;
     document.querySelector('.main-page').hidden = false;
 }
 
 
-function onLarger(){
-    gMeme.lines[gMeme.selectedLineIdx].size+=10;
+function onLarger() {
+    gMeme.lines[gMeme.selectedLineIdx].size += 10;
     drawImg()
 }
-function onSmaller(){
-    gMeme.lines[gMeme.selectedLineIdx].size-=10;
-    drawImg()
-}
-
-function increaseHeight(){
-    startingPosX++;
-    startingPosY++;
+function onSmaller() {
+    gMeme.lines[gMeme.selectedLineIdx].size -= 10;
     drawImg()
 }
 
-function decreaseHeight(){
-    startingPosX--;
-    startingPosY--;
-    
+function increaseHeight() {
+    gMeme.lines[gMeme.selectedLineIdx].posY++;
+    drawImg();
+}
+
+function decreaseHeight() {
+    gMeme.lines[gMeme.selectedLineIdx].posY--;
+    drawImg();
+
+}
+
+function changeLine() {
+    gMeme.selectedLineIdx++
+    if (gMeme.selectedLineIdx === gMeme.lines.length) {
+        gMeme.selectedLineIdx = 0;
+    }
+    gCtx.save()
+    drawImg()
+    gCtx.restore()
+    drawImg()
 }

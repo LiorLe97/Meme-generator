@@ -2,6 +2,9 @@
     font-family: impact;
     src: url(../fonts/impact/impact.ttf);
 }
+*{
+    box-sizing: border-box;
+}
 
 body {
     margin: 0 auto;
@@ -10,7 +13,10 @@ body {
 
 img {
     margin: 20px;
+    cursor:pointer;
 }
+
+
 
 .canvas {
     border: black 1px solid;
@@ -33,7 +39,5 @@ img {
 }
 
 .text-changes{
-    
     height:50%;
-    flex-direction:column;
 }

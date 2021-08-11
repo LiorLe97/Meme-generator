@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,16 @@
     <title>Meme Generator!</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
-<body>
-    <div class="main-page" >
+
+<body onload="init()">
+    <div class="main-page">
         <header class="main-header">
-header place holder
+            header place holder
         </header>
         <div class="gallery">
 
         </div>
-        
+
     </div>
     <div class="editing-page" hidden>
         <div class="canvas-container">
@@ -27,12 +29,14 @@ header place holder
             <button onclick="onSmaller()">decrease text size</button>
             <button onclick="increaseHeight()">↑</button>
             <button onclick="decreaseHeight()">↓</button>
+            <button onclick="changeLine()" >↹</button>
             <button onclick="showMainPage()">save</button>
         </div>
     </div>
     <script src="js/util.js"></script>
     <script src="js/storage-service.js"></script>
     <script src="js/meme-service.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/meme-controller.js"></script>
 </body>
+
 </html>
