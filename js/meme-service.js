@@ -41,18 +41,20 @@ let gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: '',
+            txt: 'enter new text',
             size: 20,
             align: 'left',
             color: 'red',
-            posY:startingPosY
+            posY: startingPosY,
+            posX: startingPosX
         },
         {
             txt: '',
             size: 20,
             align: 'left',
             color: 'red',
-            posY:startingPosY
+            posY: startingPosY,
+            posX: startingPosX
         }
     ]
 }
@@ -61,9 +63,11 @@ function drawImg() {
     img.src = getMemeById(gMeme.selectedImgId).url
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-        drawText(gMeme.lines[gMeme.selectedLineIdx].txt, startingPosX, gMeme.lines[gMeme.selectedLineIdx].posY)
-
+       gMeme.lines.forEach(function (line){
+           drawText(line.txt, line.posX, line.posY)
+       })
     }
+
 }
 
 function drawText(txt, x, y) {
@@ -74,6 +78,7 @@ function drawText(txt, x, y) {
     gCtx.fillStyle = 'white'
     gCtx.fillText(txt, x, y)
     gCtx.strokeText(txt, x, y)
+
 }
 
 
@@ -91,12 +96,12 @@ function getMemeById(memeId) {
 
 function onSetText(val) {
     gMeme.lines[gMeme.selectedLineIdx].txt = val;
-    drawImg();
+   drawImg()
 }
 
 function chooseImg(el) {
     gMeme.selectedImgId = +(el.dataset.id);
-    drawImg();
+    drawImg()
 }
 
 
@@ -116,13 +121,13 @@ function onSmaller() {
 }
 
 function increaseHeight() {
-    gMeme.lines[gMeme.selectedLineIdx].posY++;
-    drawImg();
+    gMeme.lines[gMeme.selectedLineIdx].posY--;
+    drawImg()
 }
 
 function decreaseHeight() {
-    gMeme.lines[gMeme.selectedLineIdx].posY--;
-    drawImg();
+    gMeme.lines[gMeme.selectedLineIdx].posY++;
+    drawImg()
 
 }
 
@@ -131,8 +136,13 @@ function changeLine() {
     if (gMeme.selectedLineIdx === gMeme.lines.length) {
         gMeme.selectedLineIdx = 0;
     }
-    gCtx.save()
-    drawImg()
-    gCtx.restore()
-    drawImg()
+    
 }
+
+
+
+// function renderCanvas() {
+//     gCtx.save();
+//     drawImg();
+//     gCtx.restore();
+// }
