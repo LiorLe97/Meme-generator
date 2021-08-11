@@ -1,0 +1,22 @@
+@font-face {
+    font-family: impact;
+    src: url(../fonts/impact/impact.ttf);
+}
+
+body {
+    margin: 0 auto;
+}
+
+img {
+    margin: 20px;
+}
+
+.canvas {
+    border: black 1px solid;
+}
+
+.main-header {
+    text-align: center;
+    background-color: gray;
+    height: 15vh
+}
