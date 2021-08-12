@@ -31,7 +31,22 @@ function onDeleteLine() {
 }
 
 
-function onAlign(posX){
+function onAlign(posX) {
     align(posX)
+    drawImg();
+}
+
+function onSelectFont(val) {
+    selectFont(val);
+    drawImg();
+}
+
+function onChangeTextColor(val){
+    changeFontColor(val);
+    drawImg();
+}
+
+function onChangeOutlineColor(val){
+    changeOutlineColor(val);
     drawImg();
 }

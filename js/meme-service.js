@@ -45,7 +45,9 @@ let gMeme = {
             txt: 'enter new text',
             size: 20,
             align: 'left',
-            color: 'red',
+            color: 'white',
+            outline:'black',
+            font: 'Impact',
             isSelected: true,
             posY: startingPosY,
             posX: startingPosX
@@ -65,13 +67,13 @@ function drawImg() {
 }
 
 function drawText(line) {
-    gCtx.font = `${line.size}px Impact`;
+    gCtx.font = `${line.size}px ${line.font}`;
     gCtx.lineWidth = 2;
-    gCtx.strokeStyle = 'black'
+    gCtx.strokeStyle = `${line.outline}`
     if (line.isSelected) {
         gCtx.strokeStyle = 'red'
     }
-    gCtx.fillStyle = 'white'
+    gCtx.fillStyle = `${line.color}`
     gCtx.fillText(line.txt, line.posX, line.posY)
     gCtx.strokeText(line.txt, line.posX, line.posY)
 
@@ -160,7 +162,9 @@ function createNewLine() {
         txt: 'enter new text',
         size: 20,
         align: 'left',
-        color: 'red',
+        color: 'white',
+        outline:'black',
+        font: 'Impact',
         isSelected: false,
         posY: startingPosY,
         posX: startingPosX
@@ -172,6 +176,17 @@ function align(posX) {
     gMeme.lines[gMeme.selectedLineIdx].posX = posX
 }
 
+function selectFont(val) {
+    gMeme.lines[gMeme.selectedLineIdx].font = val;
+
+}
+function changeFontColor(val) {
+    gMeme.lines[gMeme.selectedLineIdx].color = val;
+}
+
+function changeOutlineColor(val){
+    gMeme.lines[gMeme.selectedLineIdx].outline = val;
+}
 
 
 function getImgForDisplay() {

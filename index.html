@@ -40,31 +40,35 @@
                     <img class="edit-img arrow-down" src="images/symbols/arrowdown.png" alt="">
                 </button>
                 <button class="change-item add-line" onclick="onCreateNewLine()">+</button>
-                <button class="change-item delete-line" onclick="onDeleteLine()"><img class="edit-img" src="images/symbols/garbage.png" alt="">
+                <button class="change-item delete-line" onclick="onDeleteLine()"><img class="edit-img"
+                        src="images/symbols/garbage.png" alt="">
                 </button>
             </div>
             <div class="edit-2 flex">
                 <button class="change-item" onclick="onLarger()">A+</button>
                 <button class="change-item" onclick="onSmaller()">A-</button>
-                <button class="change-item" onclick="onAlign(170)">align-right</button>
-                <button class="change-item" onclick="onAlign(110)">align-center</button>
                 <button class="change-item" onclick="onAlign(5)">align-left</button>
-                <select name="font-filter" id="">
-                    <option value="impact">impact</option>
-                    <option value="lato">lato</option>
-                    <option value="poppins">poppins</option>
+                <button class="change-item" onclick="onAlign(110)">align-center</button>
+                <button class="change-item" onclick="onAlign(170)">align-right</button>
+                <select name="font-filter" id="" onchange="onSelectFont(this.value)">
+                    <option style="font-family:Impact" value="Impact">Impact</option>
+                    <option style="font-family:lato" value="lato">lato</option>
+                    <option style="font-family:poppins" value="poppins">poppins</option>
                 </select>
-                <button class="change-item stroke">s</button>
+                <button class="change-item stroke">
+                    <input type="color" class="input-outline" oninput="onChangeOutlineColor(this.value)">
+                </button>
                 <button class="change-item fill-color">
-                    <img class="edit-img color-img" src="images/symbols/colorpal.png"
-                        alt="">
-                        <input class="input-color" type="color">
-                    </button>
+                    <img class="edit-img color-img" src="images/symbols/colorpal.png" alt="">
+                    <input class="input-color" type="color" oninput="onChangeTextColor(this.value)">
+                </button>
 
             </div>
             <div class="text-editing">
                 <button class="change-item" onclick="increaseHeight()">↑</button>
                 <button class="change-item" onclick="decreaseHeight()">↓</button>
+                <button class="change-item">save</button>
+                <button class="change-item">share</button>
             </div>
             <button class="change-item" onclick="showMainPage()">save</button>
         </div>
