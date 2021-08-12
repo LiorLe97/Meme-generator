@@ -4,7 +4,8 @@ function init(){
 }
 
 function renderGallery() {
-    let strHTML = gImgs.map(img => {
+    let imgs = getImgForDisplay();
+    let strHTML = imgs.map(img => {
         return `<img onclick="onChooseImg(this) "data-id="${img.id}" src="${img.url}" alt="">`
     })
 
@@ -14,7 +15,7 @@ function renderGallery() {
 
 
 function onChooseImg(el) {
-    document.querySelector('.editing-page').hidden = false;
+    document.querySelector('.editing-page').style.display = 'flex';
     document.querySelector('.main-page').hidden = true;
     chooseImg(el);
 }

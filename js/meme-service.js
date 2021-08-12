@@ -3,9 +3,10 @@
 const gCanvas = document.querySelector('.canvas');
 const gCtx = gCanvas.getContext('2d')
 let gtxtValue = '';
-let startingPosX = gCanvas.width / 2
-let startingPosY = gCanvas.height / 2
+let startingPosX = (gCanvas.width / 2) - 70;
+let startingPosY = (gCanvas.height / 2);
 let gCurrImgId;
+let gKeyWords = ['politics','animal','baby','this','sport','listen','you','movie','cheers']
 
 
 
@@ -15,24 +16,24 @@ function init() {
 
 
 let gImgs = [
-    { id: 1, url: 'images/meme images-square/1.jpg', keywords: ['happy'] },
-    { id: 2, url: 'images/meme images-square/2.jpg', keywords: ['happy'] },
-    { id: 3, url: 'images/meme images-square/3.jpg', keywords: ['happy'] },
-    { id: 4, url: 'images/meme images-square/4.jpg', keywords: ['happy'] },
-    { id: 5, url: 'images/meme images-square/5.jpg', keywords: ['happy'] },
-    { id: 6, url: 'images/meme images-square/6.jpg', keywords: ['happy'] },
-    { id: 7, url: 'images/meme images-square/7.jpg', keywords: ['happy'] },
-    { id: 8, url: 'images/meme images-square/8.jpg', keywords: ['happy'] },
-    { id: 9, url: 'images/meme images-square/9.jpg', keywords: ['happy'] },
-    { id: 10, url: 'images/meme images-square/10.jpg', keywords: ['happy'] },
-    { id: 11, url: 'images/meme images-square/11.jpg', keywords: ['happy'] },
-    { id: 12, url: 'images/meme images-square/12.jpg', keywords: ['happy'] },
-    { id: 13, url: 'images/meme images-square/13.jpg', keywords: ['happy'] },
-    { id: 14, url: 'images/meme images-square/14.jpg', keywords: ['happy'] },
-    { id: 15, url: 'images/meme images-square/15.jpg', keywords: ['happy'] },
-    { id: 16, url: 'images/meme images-square/16.jpg', keywords: ['happy'] },
-    { id: 17, url: 'images/meme images-square/17.jpg', keywords: ['happy'] },
-    { id: 18, url: 'images/meme images-square/18.jpg', keywords: ['happy'] },
+    { id: 1, url: 'images/meme images-square/1.jpg', keywords: ['politics'] },
+    { id: 2, url: 'images/meme images-square/2.jpg', keywords: ['animal'] },
+    { id: 3, url: 'images/meme images-square/3.jpg', keywords: ['animal', 'baby'] },
+    { id: 4, url: 'images/meme images-square/4.jpg', keywords: ['animal'] },
+    { id: 5, url: 'images/meme images-square/5.jpg', keywords: ['baby'] },
+    { id: 6, url: 'images/meme images-square/6.jpg', keywords: ['this'] },
+    { id: 7, url: 'images/meme images-square/7.jpg', keywords: ['baby'] },
+    { id: 8, url: 'images/meme images-square/8.jpg', keywords: ['listen'] },
+    { id: 9, url: 'images/meme images-square/9.jpg', keywords: ['baby'] },
+    { id: 10, url: 'images/meme images-square/10.jpg', keywords: ['politics'] },
+    { id: 11, url: 'images/meme images-square/11.jpg', keywords: ['sport'] },
+    { id: 12, url: 'images/meme images-square/12.jpg', keywords: ['you'] },
+    { id: 13, url: 'images/meme images-square/13.jpg', keywords: ['cheers'] },
+    { id: 14, url: 'images/meme images-square/14.jpg', keywords: ['movie'] },
+    { id: 15, url: 'images/meme images-square/15.jpg', keywords: ['this'] },
+    { id: 16, url: 'images/meme images-square/16.jpg', keywords: ['movie'] },
+    { id: 17, url: 'images/meme images-square/17.jpg', keywords: ['politics'] },
+    { id: 18, url: 'images/meme images-square/18.jpg', keywords: ['movie'] },
 ];
 
 
@@ -63,16 +64,16 @@ function drawImg() {
     img.src = getMemeById(gMeme.selectedImgId).url
     img.onload = () => {
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
-       gMeme.lines.forEach(function (line){
-           drawText(line)
-       })
+        gMeme.lines.forEach(function (line) {
+            drawText(line)
+        })
     }
 
 }
 
 function drawText(line) {
     gCtx.font = `${line.size}px Impact`;
-    gCtx.lineWidth = 2
+    gCtx.lineWidth = 2;
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = 'white'
     gCtx.fillText(line.txt, line.posX, line.posY)
@@ -95,7 +96,7 @@ function getMemeById(memeId) {
 
 function onSetText(val) {
     gMeme.lines[gMeme.selectedLineIdx].txt = val;
-   drawImg()
+    drawImg()
 }
 
 function chooseImg(el) {
@@ -105,13 +106,13 @@ function chooseImg(el) {
 
 
 function showMainPage() {
-    document.querySelector('.editing-page').hidden = true;
+    document.querySelector('.editing-page').style.display = 'none';
     document.querySelector('.main-page').hidden = false;
 }
 
 
 function onLarger() {
-    gMeme.lines[gMeme.selectedLineIdx].size +=10;
+    gMeme.lines[gMeme.selectedLineIdx].size += 10;
     drawImg()
 }
 function onSmaller() {
@@ -120,12 +121,12 @@ function onSmaller() {
 }
 
 function increaseHeight() {
-    gMeme.lines[gMeme.selectedLineIdx].posY--;
+    gMeme.lines[gMeme.selectedLineIdx].posY-=10;
     drawImg()
 }
 
 function decreaseHeight() {
-    gMeme.lines[gMeme.selectedLineIdx].posY++;
+    gMeme.lines[gMeme.selectedLineIdx].posY+=10;
     drawImg()
 
 }
@@ -145,3 +146,34 @@ function changeLine() {
 //     drawImg();
 //     gCtx.restore();
 // }
+
+
+function getImgForDisplay() {
+    let elSearch = document.querySelector('[name=search-bar]');
+    let searchWord = elSearch.value;
+    let filterdImgs = gImgs.filter(img => {
+        return img.keywords.includes(searchWord);
+    })
+    if (!gKeyWords.includes(searchWord)) {
+        return gImgs;
+    }
+    return filterdImgs;
+}
+
+
+// let keywords = gImgs.map(img => {
+//     let word = img.keywords;
+//     word.map(word => {
+//         return word 
+//     })
+//     return word
+// })
+
+
+// let words = keywords.map(word=>{
+//     return word.includes('baby')
+// })
+
+// console.log(words)
+
+

@@ -18,21 +18,33 @@
         </ul>
     </header>
     <div class="main-page main-layout">
+        <div class="searching">
+            <input class="search-bar" type="text" name="search-bar" oninput="renderGallery()"
+                oninput="getImgForDisplay()" placeholder="search">
+        </div>
         <div class="gallery">
         </div>
     </div>
-    <div class="editing-page" hidden>
+    <div class="editing-page main-layout">
         <div class="canvas-container">
-            <canvas class='canvas'></canvas><br>
+            <canvas class='canvas'></canvas>
         </div>
         <div class="text-changes">
-            <input type="text" name="text" oninput="onSetText(this.value)">
-            <button onclick="onLarger()">increase text size</button>
-            <button onclick="onSmaller()">decrease text size</button>
-            <button onclick="increaseHeight()">↑</button>
-            <button onclick="decreaseHeight()">↓</button>
-            <button onclick="changeLine()">↹</button>
-            <button onclick="showMainPage()">save</button>
+            <div class="text">
+                <input class="change-item" type="text" name="text" oninput="onSetText(this.value)">
+            </div>
+            <div class="delete-line">
+                <button class="change-item change-line" onclick="changeLine()">↹</button>
+                <button class="change-item">delete</button>
+                <button class="change-item">add</button>
+            </div>
+            <div class="text-editing">
+                <button class="change-item" onclick="onLarger()">increase text size</button>
+                <button class="change-item" onclick="onSmaller()">decrease text size</button>
+                <button class="change-item" onclick="increaseHeight()">↑</button>
+                <button class="change-item" onclick="decreaseHeight()">↓</button>
+            </div>
+            <button class="change-item" onclick="showMainPage()">save</button>
         </div>
     </div>
     <footer class="main-footer">
