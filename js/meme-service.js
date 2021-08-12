@@ -134,17 +134,26 @@ function changeLine() {
     }
     gMeme.lines[gMeme.selectedLineIdx].isSelected = true
     if (gMeme.selectedLineIdx === 0) {
-        gMeme.lines[gMeme.lines.length-1].isSelected = false;
+        gMeme.lines[gMeme.lines.length - 1].isSelected = false;
     } else {
         gMeme.lines[gMeme.selectedLineIdx - 1].isSelected = false;
     }
     drawImg();
 }
-function deleteLine(){
-    if(gMeme.lines[gMeme.selectedLineIdx].isSelected){
-        gMeme.lines.splice(gMeme.selectedLineIdx,1)
-    }
+function deleteLine() {
+    let idx = findSelectedIdx()
+    gMeme.lines.splice(idx, 1);
+
 }
+
+function findSelectedIdx() {
+    let selectedMemeIdx = gMeme.lines.findIndex(line => {
+        return line.isSelected;
+    })
+    return selectedMemeIdx;
+}
+
+
 
 function createNewLine() {
     gMeme.lines.push({
@@ -156,9 +165,12 @@ function createNewLine() {
         posY: startingPosY,
         posX: startingPosX
     })
-    drawImg();
 }
 
+
+function align(posX) {
+    gMeme.lines[gMeme.selectedLineIdx].posX = posX
+}
 
 
 

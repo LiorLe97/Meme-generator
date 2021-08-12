@@ -1,5 +1,5 @@
 'use strict'
-function init(){
+function init() {
     renderGallery();
 }
 
@@ -20,10 +20,18 @@ function onChooseImg(el) {
     chooseImg(el);
 }
 
-function onCreateNewLine(){
+function onCreateNewLine() {
     createNewLine();
+    drawImg();
 }
 
-function onDeleteLine(){
+function onDeleteLine() {
     deleteLine();
+    drawImg();
+}
+
+
+function onAlign(posX){
+    align(posX)
+    drawImg();
 }
