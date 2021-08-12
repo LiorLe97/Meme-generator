@@ -6,7 +6,7 @@ let gtxtValue = '';
 let startingPosX = (gCanvas.width / 2) - 70;
 let startingPosY = (gCanvas.height / 2);
 let gCurrImgId;
-let gKeyWords = ['politics','animal','baby','this','sport','listen','you','movie','cheers']
+let gKeyWords = ['politics', 'animal', 'baby', 'this', 'sport', 'listen', 'you', 'movie', 'cheers']
 
 
 
@@ -46,14 +46,7 @@ let gMeme = {
             size: 20,
             align: 'left',
             color: 'red',
-            posY: startingPosY,
-            posX: startingPosX
-        },
-        {
-            txt: '',
-            size: 20,
-            align: 'left',
-            color: 'red',
+            isSelected: true,
             posY: startingPosY,
             posX: startingPosX
         }
@@ -75,6 +68,9 @@ function drawText(line) {
     gCtx.font = `${line.size}px Impact`;
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = 'black'
+    if (line.isSelected) {
+        gCtx.strokeStyle = 'red'
+    }
     gCtx.fillStyle = 'white'
     gCtx.fillText(line.txt, line.posX, line.posY)
     gCtx.strokeText(line.txt, line.posX, line.posY)
@@ -121,12 +117,12 @@ function onSmaller() {
 }
 
 function increaseHeight() {
-    gMeme.lines[gMeme.selectedLineIdx].posY-=10;
+    gMeme.lines[gMeme.selectedLineIdx].posY -= 10;
     drawImg()
 }
 
 function decreaseHeight() {
-    gMeme.lines[gMeme.selectedLineIdx].posY+=10;
+    gMeme.lines[gMeme.selectedLineIdx].posY += 10;
     drawImg()
 
 }
@@ -136,16 +132,34 @@ function changeLine() {
     if (gMeme.selectedLineIdx === gMeme.lines.length) {
         gMeme.selectedLineIdx = 0;
     }
-    console.log(gMeme.selectedLineIdx)
+    gMeme.lines[gMeme.selectedLineIdx].isSelected = true
+    if (gMeme.selectedLineIdx === 0) {
+        gMeme.lines[gMeme.lines.length-1].isSelected = false;
+    } else {
+        gMeme.lines[gMeme.selectedLineIdx - 1].isSelected = false;
+    }
+    drawImg();
+}
+function deleteLine(){
+    if(gMeme.lines[gMeme.selectedLineIdx].isSelected){
+        gMeme.lines.splice(gMeme.selectedLineIdx,1)
+    }
+}
+
+function createNewLine() {
+    gMeme.lines.push({
+        txt: 'enter new text',
+        size: 20,
+        align: 'left',
+        color: 'red',
+        isSelected: false,
+        posY: startingPosY,
+        posX: startingPosX
+    })
+    drawImg();
 }
 
 
-
-// function renderCanvas() {
-//     gCtx.save();
-//     drawImg();
-//     gCtx.restore();
-// }
 
 
 function getImgForDisplay() {
@@ -161,19 +175,8 @@ function getImgForDisplay() {
 }
 
 
-// let keywords = gImgs.map(img => {
-//     let word = img.keywords;
-//     word.map(word => {
-//         return word 
-//     })
-//     return word
-// })
 
 
-// let words = keywords.map(word=>{
-//     return word.includes('baby')
-// })
 
-// console.log(words)
 
 

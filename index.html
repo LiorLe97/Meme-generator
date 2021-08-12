@@ -21,6 +21,7 @@
         <div class="searching">
             <input class="search-bar" type="text" name="search-bar" oninput="renderGallery()"
                 oninput="getImgForDisplay()" placeholder="search">
+            <img class="search-img" src="images/symbols/search.png" alt="">
         </div>
         <div class="gallery">
         </div>
@@ -33,14 +34,35 @@
             <div class="text">
                 <input class="change-item" type="text" name="text" oninput="onSetText(this.value)">
             </div>
-            <div class="delete-line">
-                <button class="change-item change-line" onclick="changeLine()">↹</button>
-                <button class="change-item">delete</button>
-                <button class="change-item">add</button>
+            <div class="edit-1">
+                <button class="change-item change-line" onclick="changeLine()">
+                    <img class="edit-img arrow-up" src="images/symbols/arrowup.png" alt="">
+                    <img class="edit-img arrow-down" src="images/symbols/arrowdown.png" alt="">
+                </button>
+                <button class="change-item add-line" onclick="onCreateNewLine()">+</button>
+                <button class="change-item delete-line" onclick="onDeleteLine()"><img class="edit-img" src="images/symbols/garbage.png" alt="">
+                </button>
+            </div>
+            <div class="edit-2 flex">
+                <button class="change-item" onclick="onLarger()">A+</button>
+                <button class="change-item" onclick="onSmaller()">A-</button>
+                <button class="change-item">align-left</button>
+                <button class="change-item">align-center</button>
+                <button class="change-item">align-left</button>
+                <select name="font-filter" id="">
+                    <option value="impact">impact</option>
+                    <option value="lato">lato</option>
+                    <option value="poppins">poppins</option>
+                </select>
+                <button class="change-item stroke">s</button>
+                <button class="change-item fill-color">
+                    <img class="edit-img color-img" src="images/symbols/colorpal.png"
+                        alt="">
+                        <input class="input-color" type="color">
+                    </button>
+
             </div>
             <div class="text-editing">
-                <button class="change-item" onclick="onLarger()">increase text size</button>
-                <button class="change-item" onclick="onSmaller()">decrease text size</button>
                 <button class="change-item" onclick="increaseHeight()">↑</button>
                 <button class="change-item" onclick="decreaseHeight()">↓</button>
             </div>

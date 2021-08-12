@@ -13,6 +13,11 @@
     src: url(../fonts/Awesome/fa-brands-400.ttf);
 }
 
+@font-face {
+    font-family: poppins-semi;
+    src: url(../fonts/poppins/Poppins-SemiBold.ttf);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -36,7 +41,7 @@ img {
     transition: 0.6s;
 }
 
-img:hover {
+.gallery-img:hover {
     height: 310px;
 }
 
@@ -88,6 +93,7 @@ img:hover {
 }
 
 .searching {
+    display: flex;
     margin-left: 10px;
     position: relative;
     top: 10px;
@@ -103,6 +109,14 @@ img:hover {
     color: white;
     background-color: #22252c;
     height: 20px;
+}
+
+.search-img {
+    display: flex;
+    justify-content: flex-end;
+    height: 15px;
+    position: relative;
+    bottom: 11px;
 }
 
 .nav-bar a:hover {
@@ -173,7 +187,7 @@ a {
 }
 
 .canvas-container {
-    display:flex;
+    display: flex;
     margin: auto;
     align-self: center;
 }
@@ -181,14 +195,17 @@ a {
 .text-changes {
     display: flex;
     margin: auto;
-    width: 400px;
+    max-width: 400px;
     flex-direction: column;
-    align-items: center;
     background-color: #383b42;
 }
 
 .change-item {
     margin: 10px;
+}
+
+.edit-img {
+    height: 30px;
 }
 
 .text-changes input {
@@ -201,16 +218,106 @@ a {
     background-color: #ebeef3;
 }
 
-.delete-line .change-line {
-    font-size:30px;
-    border:none;
-    cursor:pointer;
+.edit-1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.arrow-up {
+    margin-left: 63px;
+}
+
+.arrow-down {
+    position: relative;
+    right: 41px;
+}
+
+.edit-1 .change-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
     width: 57px;
     height: 53px;
     box-shadow: 1px 5px 0 #048b97, inset 0 5px 0 rgba(255, 255, 255, 0.58);
     border-radius: 10px;
     background-color: #ebeef3;
     background-image: linear-gradient(-38deg, #66c4dc 0%, #40b1ce 50%, #0c98bb 100%);
+}
+
+.edit-1 .delete-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 53px;
+    box-shadow: 1px 5px 0 #8c0606, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    background-color: #ebeef3;
+    background-image: linear-gradient(-38deg, #cf1d37 0%, #cf1d37 1%, #f05036 100%);
+}
+
+.edit-1 .add-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: poppins-semi;
+    font-size: 51px;
+    color: white;
+    width: 58px;
+    height: 53px;
+    box-shadow: 1px 5px 0 #015d33, inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    background-color: #ebeef3;
+    background-image: linear-gradient(-38deg, #42eb5c 0%, #37b34a 100%);
+}
+
+.edit-2 {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    border-radius: 15px;
+    background-color: #19a59f;
+}
+
+.edit-2 .fill-color {
+    font-family: poppins-semi;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 50px;
+    box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.edit-2 .stroke {
+    width: 55px;
+    height: 50px;
+    box-shadow: 1px 5px 0 rgba(92, 92, 92, 0.55), inset 0 5px 0 rgba(255, 255, 255, 0.58);
+    border-radius: 10px;
+    background-color: #ffffff;
+    background-color: #ffffff;
+}
+
+.input-color {
+    opacity: 0;
+    position: relative;
+    right: 35px;
+    top: 3px;
+}
+
+.color-img {
+    position: relative;
+    left: 6px;
+}
+
+select {
+    width: 120px;
+    height: 30px;
 }
 
 @media (max-width:980px) {
@@ -223,16 +330,16 @@ a {
     .main-layout {
         max-width: 360px;
     }
-    .editing-page{
-        flex-direction:column;
-        justify-items:center;
+    .editing-page {
+        flex-direction: column;
+        align-items: center;
     }
-    .canvas{
-        height:250px;
-        width:250px;
+    .canvas {
+        height: 250px;
+        width: 250px;
     }
-    .text{
-        width:250px;
+    .text-changes {
+        max-width: 250px;
     }
 }
 
