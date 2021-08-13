@@ -45,11 +45,17 @@
                 </button>
             </div>
             <div class="edit-2 flex">
-                <button class="change-item" onclick="onLarger()">A+</button>
-                <button class="change-item" onclick="onSmaller()">A-</button>
-                <button class="change-item" onclick="onAlign(5)">align-left</button>
-                <button class="change-item" onclick="onAlign(110)">align-center</button>
-                <button class="change-item" onclick="onAlign(170)">align-right</button>
+                <button class="change-item larger-text" onclick="onLarger()">A+</button>
+                <button class="change-item smaller-text" onclick="onSmaller()">A-</button>
+                <button class="change-item btn-style" onclick="onAlign(5)">
+                    <img class="align-img" src="./images/symbols/alignleft.png" alt="">
+                </button>
+                <button class="change-item btn-style" onclick="onAlign(110)">
+                    <img class="align-img" src="./images/symbols/aligncenter.png" alt="">
+                </button>
+                <button class="change-item btn-style" onclick="onAlign(170)">
+                    <img class="align-img" src="./images/symbols/alignright.png" alt="">
+                </button>
                 <select name="font-filter" id="" onchange="onSelectFont(this.value)">
                     <option style="font-family:Impact" value="Impact">Impact</option>
                     <option style="font-family:lato" value="lato">lato</option>
@@ -65,13 +71,16 @@
 
             </div>
             <div class="text-editing">
-                <button class="change-item" onclick="increaseHeight()">↑</button>
-                <button class="change-item" onclick="decreaseHeight()">↓</button>
-                <button class="change-item">save</button>
-                <button class="change-item">share</button>
+                <button class="change-item btn-style-2" onclick="increaseHeight()">↑</button>
+                <button class="change-item btn-style-2" onclick="decreaseHeight()">↓</button>
             </div>
-            <button class="change-item" onclick="showMainPage()">save</button>
+           
+            <button class="change-item" onclick="showMainPage()" hidden>save</button>
         </div>
+    </div>
+    <div class="share-options">
+        <button class="change-item btn-style-2 blue">save</button>
+        <button class="change-item btn-style-2 purple">share</button>
     </div>
     <footer class="main-footer">
         <div class="logo">MemeGenerator</div>
