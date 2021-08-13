@@ -364,10 +364,16 @@ a {
 
 .blue {
     background-color: #1e7cd3;
+    font-family: poppins-semi;
 }
 
 .purple {
     background-color: #8f44bb;
+    font-family: poppins-semi;
+}
+.share-options{
+    display:none;
+    justify-content: center;
 }
 
 .align-img {

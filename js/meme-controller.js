@@ -17,6 +17,7 @@ function renderGallery() {
 function onChooseImg(el) {
     document.querySelector('.editing-page').style.display = 'flex';
     document.querySelector('.main-page').hidden = true;
+    document.querySelector('.share-options').style.display = 'flex'
     chooseImg(el);
 }
 
@@ -41,12 +42,12 @@ function onSelectFont(val) {
     drawImg();
 }
 
-function onChangeTextColor(val){
+function onChangeTextColor(val) {
     changeFontColor(val);
     drawImg();
 }
 
-function onChangeOutlineColor(val){
+function onChangeOutlineColor(val) {
     changeOutlineColor(val);
     drawImg();
 }
