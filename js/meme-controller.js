@@ -79,3 +79,8 @@ function onSaveMeme(elLink) {
     console.log(data)
     saveMeme(data)
 }
+
+
+function onMenuOpen(){
+    document.body.classList.toggle('menu-open');
+}

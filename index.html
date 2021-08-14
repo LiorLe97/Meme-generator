@@ -10,12 +10,14 @@
 </head>
 
 <body onload="init()">
+    <div class="screen" onclick="onMenuOpen()"></div>
     <header class="main-header">
         <div class="logo">MemeGenerator</div>
         <ul class="nav-bar clean-list">
             <li><a href="">Gallery</a></li>
             <li><a onclick="onGoToMemeGallery(event)" href="">Meme</a></li>
         </ul>
+        <button class="burger-btn" onclick="onMenuOpen()">☰</button>
     </header>
     <div class="main-page main-layout">
         <div class="searching">
