@@ -137,6 +137,9 @@ img {
 }
 
 .main-footer {
+    position:fixed;
+    bottom:0;
+    width:100%;
     display: flex;
     flex-direction: column;
     height: 15vh;
