@@ -76,8 +76,15 @@ function onGoToMemeGallery(ev) {
 
 
 function onSaveMeme(elLink) {
+    const elMain = document.querySelector('.main-page');
+    const elEdit = document.querySelector('.editing-page');
+    const elSharing = document.querySelector('.share-options')
     const data = gCanvas.toDataURL('image/png', 0.5);
     saveMeme(data)
+    elMain.hidden = false;
+    elEdit.style.display = 'none';
+    elSharing.style.display = 'none';
+    
 }
 
 
