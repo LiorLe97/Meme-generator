@@ -1,6 +1,7 @@
 'use strict'
 function init() {
     renderGallery();
+    renderSavedMemes();
 }
 
 function renderGallery() {
@@ -11,6 +12,15 @@ function renderGallery() {
 
     let elGallery = document.querySelector('.gallery')
     elGallery.innerHTML = strHTML.join('')
+}
+
+function renderSavedMemes() {
+    let imgs = loadFromStorage(KEY)
+    let strHTML = imgs.map(img => {
+        return `<img class="gallery-img src="${img}" alt="">`
+    })
+    let elSavedMemes = document.querySelector('.saved-meme-gallery');
+    elSavedMemes.innerHTML = strHTML.join('');
 }
 
 
@@ -50,4 +60,22 @@ function onChangeTextColor(val) {
 function onChangeOutlineColor(val) {
     changeOutlineColor(val);
     drawImg();
+}
+
+function onDownloadCanvas(elLink) {
+    const data = gCanvas.toDataURL()
+    elLink.href = data
+}
+
+function onGoToMemeGallery(ev) {
+    ev.preventDefault();
+    document.querySelector('.main-page').hidden = true;
+    document.querySelector('.saved-meme-gallery').hidden = false;
+}
+
+
+function onSaveMeme(elLink) {
+    const data = gCanvas.toDataURL();
+    console.log(data)
+    saveMeme(data)
 }

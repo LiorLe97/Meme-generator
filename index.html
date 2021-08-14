@@ -14,7 +14,7 @@
         <div class="logo">MemeGenerator</div>
         <ul class="nav-bar clean-list">
             <li><a href="">Gallery</a></li>
-            <li><a href="">About</a></li>
+            <li><a onclick="onGoToMemeGallery(event)" href="">Meme</a></li>
         </ul>
     </header>
     <div class="main-page main-layout">
@@ -74,13 +74,16 @@
                 <button class="change-item btn-style-2" onclick="increaseHeight()">↑</button>
                 <button class="change-item btn-style-2" onclick="decreaseHeight()">↓</button>
             </div>
-           
+
             <button class="change-item" onclick="showMainPage()" hidden>save</button>
         </div>
     </div>
     <div class="share-options">
-        <button class="change-item btn-style-2 blue">save</button>
-        <button class="change-item btn-style-2 purple">share</button>
+        <a href="#" class="change-item btn-style-2 blue" onclick="onDownloadCanvas(this)" download="myphoto">download</a>
+        <a href="#"class="change-item btn-style-2 purple" onclick="onSaveMeme(this)" >save Meme</a>
+    </div>
+    <div class="saved-meme-gallery" hidden>
+
     </div>
     <footer class="main-footer">
         <div class="logo">MemeGenerator</div>

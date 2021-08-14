@@ -7,7 +7,8 @@ let startingPosX = (gCanvas.width / 2) - 70;
 let startingPosY = (gCanvas.height / 2);
 let gCurrImgId;
 let gKeyWords = ['politics', 'animal', 'baby', 'this', 'sport', 'listen', 'you', 'movie', 'cheers']
-
+let gSavedMemes = [];
+const KEY = 'memes_db'
 
 
 function init() {
@@ -46,7 +47,7 @@ let gMeme = {
             size: 20,
             align: 'left',
             color: 'white',
-            outline:'black',
+            outline: 'black',
             font: 'Impact',
             isSelected: true,
             posY: startingPosY,
@@ -163,7 +164,7 @@ function createNewLine() {
         size: 20,
         align: 'left',
         color: 'white',
-        outline:'black',
+        outline: 'black',
         font: 'Impact',
         isSelected: false,
         posY: startingPosY,
@@ -184,8 +185,13 @@ function changeFontColor(val) {
     gMeme.lines[gMeme.selectedLineIdx].color = val;
 }
 
-function changeOutlineColor(val){
+function changeOutlineColor(val) {
     gMeme.lines[gMeme.selectedLineIdx].outline = val;
+}
+
+function saveMeme(link) {
+    gSavedMemes.push(link)
+    _saveMemesToStorage();
 }
 
 
@@ -201,6 +207,9 @@ function getImgForDisplay() {
     return filterdImgs;
 }
 
+function _saveMemesToStorage(){
+    saveToStorage(KEY, gSavedMemes)
+}
 
 
 
