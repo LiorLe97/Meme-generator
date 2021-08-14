@@ -190,9 +190,19 @@ function changeOutlineColor(val) {
 }
 
 function saveMeme(link) {
-    gSavedMemes.push(link)
+    link = link.replace(/\s+/g, '');
+    gSavedMemes.unshift(link)
     _saveMemesToStorage();
 }
+
+function createMeme(link){
+    let img = {
+        id:getRandomInt(0,30),
+        url:link
+    }
+    return img;
+}
+
 
 
 function getImgForDisplay() {

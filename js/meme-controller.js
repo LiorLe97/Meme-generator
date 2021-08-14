@@ -17,7 +17,8 @@ function renderGallery() {
 function renderSavedMemes() {
     let imgs = loadFromStorage(KEY)
     let strHTML = imgs.map(img => {
-        return `<img class="gallery-img src="${img}" alt="">`
+        console.log(img)
+        return `<img class="gallery-img saved-img" src="${img}" alt="">`
     })
     let elSavedMemes = document.querySelector('.saved-meme-gallery');
     elSavedMemes.innerHTML = strHTML.join('');
@@ -75,8 +76,7 @@ function onGoToMemeGallery(ev) {
 
 
 function onSaveMeme(elLink) {
-    const data = gCanvas.toDataURL();
-    console.log(data)
+    const data = gCanvas.toDataURL('image/png', 0.5);
     saveMeme(data)
 }
 
