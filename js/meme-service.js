@@ -50,6 +50,7 @@ let gMeme = {
             outline: 'black',
             font: 'Impact',
             isSelected: true,
+            isSaved:false,
             posY: startingPosY,
             posX: startingPosX
         }
@@ -72,7 +73,7 @@ function drawText(line) {
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = `${line.outline}`
     if (line.isSelected) {
-        gCtx.strokeStyle = 'red'
+        drawRect(gCanvas.width-10, gCanvas.height+10,line)
     }
     gCtx.fillStyle = `${line.color}`
     gCtx.fillText(line.txt, line.posX, line.posY)
@@ -167,6 +168,7 @@ function createNewLine() {
         outline: 'black',
         font: 'Impact',
         isSelected: false,
+        isSaved:false,
         posY: startingPosY,
         posX: startingPosX
     })
@@ -194,6 +196,7 @@ function saveMeme(link) {
     gSavedMemes.unshift(link)
     _saveMemesToStorage();
 }
+
 
 function createMeme(link){
     let img = {
